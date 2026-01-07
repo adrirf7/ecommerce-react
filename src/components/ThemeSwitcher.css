@@ -1,0 +1,35 @@
+.theme-switcher {
+  position: absolute;
+  top: 8px;
+  right: 50px;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  font-size: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 4px;
+  z-index: 9999;
+  border: none;
+  background-color: #09f;
+  box-shadow: none;
+  transition: all 0.3s ease;
+}
+
+.theme-switcher:hover {
+  transform: scale(1.1);
+  box-shadow: none;
+}
+
+.theme-switcher:active {
+  transform: scale(0.95);
+}
+
+@media (max-width: 640px) {
+  .theme-switcher {
+    width: 32px;
+    height: 32px;
+    font-size: 0.9rem;
+  }
+}

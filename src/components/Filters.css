@@ -1,0 +1,48 @@
+.filters {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 14px;
+  font-weight: 700;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.filters > div {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.filters label {
+  white-space: nowrap;
+}
+
+/* Responsive móvil */
+@media (max-width: 640px) {
+  .filters {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+
+  .filters > div {
+    width: 100%;
+  }
+
+  .filters label {
+    font-size: 12px;
+  }
+
+  .filters input[type="range"] {
+    width: 120px;
+    max-width: 120px;
+  }
+
+  .filters select {
+    width: 140px;
+    max-width: 140px;
+    font-size: 12px;
+  }
+}
