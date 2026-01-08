@@ -1,56 +1,68 @@
 import './Cart.css'
 
-import { useId } from 'react'
-import { CartIcon, ClearCartIcon } from './Icons.jsx'
+import { CartIcon, ClearCartIcon, RemoveFromCartIcon } from './Icons.jsx'
 import { useCart } from '../hooks/useCart.js'
 
-function CartItem ({ thumbnail, price, title, quantity, addToCart }) {
+function CartItem ({ thumbnail, price, title, quantity, addToCart, decreaseQuantity, removeFromCart }) {
   return (
     <li>
       <img
         src={thumbnail}
         alt={title}
       />
-      <div>
-        <strong>{title}</strong> - ${price}
+      <div className='cart-item-info'>
+        <strong>{title}</strong>
+        <span className='cart-item-price'>${price}</span>
       </div>
 
       <footer>
-        <small>
-          Qty: {quantity}
-        </small>
-        <button onClick={addToCart}>+</button>
+        <div className='quantity-controls'>
+          <button onClick={decreaseQuantity} className='quantity-btn'>-</button>
+          <span className='quantity-display'>{quantity}</span>
+          <button onClick={addToCart} className='quantity-btn'>+</button>
+        </div>
+        <button onClick={removeFromCart} className='remove-btn' title='Eliminar producto'>
+          <RemoveFromCartIcon />
+        </button>
       </footer>
     </li>
   )
 }
 
-export function Cart () {
-  const cartCheckboxId = useId()
-  const { cart, clearCart, addToCart } = useCart()
+export function Cart ({ isOpen, setIsOpen }) {
+  const { cart, clearCart, addToCart, removeFromCart, decreaseQuantity } = useCart()
 
   return (
     <>
-      <label className='cart-button' htmlFor={cartCheckboxId}>
-        <CartIcon />
-      </label>
-      <input id={cartCheckboxId} type='checkbox' hidden />
-
-      <aside className='cart'>
+      <aside className={`cart ${isOpen ? 'cart-open' : ''}`}>
+        <div className='cart-header'>
+          <h2>Carrito</h2>
+          <button onClick={() => setIsOpen(false)} className='close-cart'>×</button>
+        </div>
+        
         <ul>
           {cart.map(product => (
             <CartItem
               key={product.id}
               addToCart={() => addToCart(product)}
+              decreaseQuantity={() => decreaseQuantity(product)}
+              removeFromCart={() => removeFromCart(product)}
               {...product}
             />
           ))}
         </ul>
 
-        <button onClick={clearCart}>
-          <ClearCartIcon />
-        </button>
+        {cart.length > 0 && (
+          <div className='cart-footer'>
+            <button onClick={clearCart} className='clear-cart-btn'>
+              <ClearCartIcon />
+              Vaciar carrito
+            </button>
+          </div>
+        )}
       </aside>
+      
+      {isOpen && <div className='cart-overlay' onClick={() => setIsOpen(false)} />}
     </>
   )
 }

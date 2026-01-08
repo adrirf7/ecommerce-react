@@ -1,23 +1,28 @@
 .footer {
   position: fixed;
-  left: 16px;
+  left: 50%;
   bottom: 16px;
-  text-align: left;
-  background: rgba(0, 0, 0, 0.7);
+  transform: translateX(-50%);
+  text-align: center;
+  background: rgba(255, 255, 255, 0.9);
+  color: #1a202c;
   padding: 8px 24px;
   border-radius: 32px;
   opacity: 0.95;
   backdrop-filter: blur(8px);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
 }
 
 .footer span {
   font-size: 14px;
-  color: #09f;
-  opacity: 0.8;
+  color: #4c51bf;
+  opacity: 1;
 }
 
 .footer h4,
 .footer h5 {
   margin: 0;
   display: flex;
+  justify-content: center;
+  align-items: center;
 }

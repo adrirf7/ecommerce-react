@@ -7,34 +7,14 @@
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-
-  /* Variables de tema oscuro */
-  --bg-color: #242424;
-  --text-color: rgba(255, 255, 255, 0.87);
-  --card-bg: #111;
-  --card-text: #fff;
-  --button-bg: #1a1a1a;
-  --price-color: #10b981;
-  --border-color: #646cff;
-  --shadow: rgba(0, 0, 0, 0.1);
-}
-
-:root.light {
-  /* Variables de tema claro */
-  --bg-color: #ffffff;
-  --text-color: #213547;
-  --card-bg: #f9f9f9;
-  --card-text: #213547;
-  --button-bg: #f9f9f9;
-  --price-color: #059669;
-  --border-color: #747bff;
-  --shadow: rgba(0, 0, 0, 0.1);
 }
 
 body {
-  color: var(--text-color);
-  background-color: var(--bg-color);
-  transition: background-color 0.3s ease, color 0.3s ease;
+  color: #1a202c;
+  background-color: #ffffff;
+  margin: 0;
+  min-width: 320px;
+  min-height: 100vh;
 }
 
 a {
@@ -46,16 +26,45 @@ a:hover {
   color: #535bf2;
 }
 
-body {
-  margin: 0;
-  min-width: 320px;
-  min-height: 100vh;
+#root {
+  padding: 0;
 }
 
-#root {
-  max-width: 1400px;
+.navbar {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  background-color: #ffffff;
+  padding: 0.5rem 0;
+  transition: box-shadow 0.3s ease;
+  width: 100%;
+}
+
+.navbar.scrolled {
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2rem;
+  max-width: 1800px;
   margin: 0 auto;
-  padding: 1rem;
+  padding: 0 1rem;
+}
+
+.content-wrapper {
+  max-width: 1800px;
+  margin: 0 auto;
+}
+
+header > svg {
+  flex-shrink: 0;
+}
+
+header > div {
+  flex: 1;
 }
 
 h1 {
@@ -70,13 +79,13 @@ button {
   font-size: 1em;
   font-weight: 500;
   font-family: inherit;
-  background-color: var(--button-bg);
+  background-color: #e2e8f0;
   cursor: pointer;
   transition: border-color 0.25s;
-  color: var(--text-color);
+  color: #1a202c;
 }
 button:hover {
-  border-color: var(--border-color);
+  border-color: #4c51bf;
 }
 button:focus,
 button:focus-visible {
@@ -84,5 +93,5 @@ button:focus-visible {
 }
 
 a:hover {
-  color: var(--border-color);
+  color: #4c51bf;
 }
